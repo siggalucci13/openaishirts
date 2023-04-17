@@ -1,24 +1,28 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import React, { useState } from 'react';
 
-const inter = Inter({ subsets: ['latin'] })
-
+let data = ''
 
 export default function Home() {
   const [imagePrompt, setImagePrompt] = useState('Image prompt');
   const [shirtColor, setShirtColor] = useState('Shirt Color');
-
   const createShirt = async () => {
-    console.log(imagePrompt);
+    //console.log(imagePrompt);
     try {
       const res = await fetch(`http://localhost:3000/api/openAI?query=${imagePrompt}`);
-      const data = await res.json();
+      data = await res.json();
+      addImage(data)
       console.log(data);
     } catch (err) {
       console.log(err);
     }
 
+  }
+
+  function addImage(data: string) {
+    if(data){
+      const image = document.getElementById("image") as HTMLImageElement
+      image.src = data
+    }else{console.log('error adding image to shirt')}
   }
   return (
     <div>
@@ -54,7 +58,7 @@ export default function Home() {
         <br />
       </form>
       <img className="w-100 h-100" src="tshirt_blank.png" />
-      <img src="{imageURL}" />
+      <img id="image" src="" />
     </div>
   );
 }

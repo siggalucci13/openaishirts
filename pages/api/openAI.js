@@ -5,7 +5,7 @@ export default async function createImage (req, res) {
     const prompt = req.query.query
     console.log(prompt)
     const configuration = new Configuration({
-        apiKey: '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',
+        apiKey: '',
       });
     const openai = new OpenAIApi(configuration);
     //console.log(openai)
@@ -15,10 +15,10 @@ export default async function createImage (req, res) {
             n: 1,
             size: '256x256',
         });
-        console.log(response)
+        //console.log(response)
         const imageUrl = response.data.data[0].url;
 
-        console.log(imageUrl)
+        //console.log(imageUrl)
         res.status(200).json({
             success: true,
             data: imageUrl,
