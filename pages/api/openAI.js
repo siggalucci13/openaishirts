@@ -5,7 +5,7 @@ export default async function createImage (req, res) {
     const prompt = req.query.query
     console.log(prompt)
     const configuration = new Configuration({
-        apiKey: '',
+        apiKey: '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',
       });
     const openai = new OpenAIApi(configuration);
     //console.log(openai)
@@ -18,11 +18,11 @@ export default async function createImage (req, res) {
         //console.log(response)
         const imageUrl = response.data.data[0].url;
 
-        //console.log(imageUrl)
-        res.status(200).json({
-            success: true,
-            data: imageUrl,
-        });
+        console.log(imageUrl)
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Cache-Control', 'max-age=180000');
+        res.end([JSON.stringify(imageUrl)]);
         } catch (error) {
             if (error.response) {
                 console.log(error.response.status);
@@ -32,11 +32,5 @@ export default async function createImage (req, res) {
             }
         }
 
-        res.status(400).json({
-            success: false,
-            error: 'The image could not be generated ',
-        });
-    console.log(imageUrl)
-    return imageUrl
     
 };
