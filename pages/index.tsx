@@ -1,59 +1,35 @@
-import React, { useState } from 'react';
-export default function Home() {
-  const [imagePrompt, setImagePrompt] = useState('Image prompt');
-  const [dataurl, setdata] = useState()
-  const [shirtColor, setShirtColor] = useState('Shirt Color');
-  const createShirt = async () => {
-    //console.log(imagePrompt);
-    try {
-      const res = await fetch(`http://localhost:3000/api/openAI?query=${imagePrompt}`);
-      const data = await res.json();
-      setdata(data)
-      console.log(dataurl);
-    } catch (err) {
-      console.log(err);
+import {useState} from 'react'
+import styles from '/styles/Home.module.css'
+function test (){
+
+    const [data, setdata] = useState()
+    const [input, setInput] = useState('')
+    const test = async () => {
+        const response = await fetch(`/api/openAI?query=${input}`)
+        const data = await response.json()
+        setdata(data)
+        console.log(data)
     }
-
-  }
-
-  function addImage(data: string) {
-    if(data){
-      const image = document.getElementById("image") as HTMLImageElement
-      image.src = data
-    }else{console.log('error adding image to shirt')}
-  }
-  return (
-    <div>
-      <h1>Custom Shirt Designer</h1>
-      <br />
-      <form>
-        <label htmlFor="imagePrompt">Image Prompt:</label>
-        <input
-          type="text"
-          id="imagePrompt"
-          value={imagePrompt}
-          onChange={e => setImagePrompt(e.target.value)}
-          required
-          className="bordered-input"
-        />
-        <br />
-        <br />
-        <label htmlFor="shirtColor">Shirt Color:</label>
-        <input
-          type="text"
-          id="shirtColor"
-          className="bordered-input"
-        />
-        <br />
-        <br />
-        <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => createShirt()}>
-          Create Shirt
-        </button>
-        <br />
-        <br />
-      </form>
-      <img className="w-100 h-100" src="tshirt_blank.png" />
-      <img id="image" src="" />
-    </div>
-  );
+    return(
+        
+        <div>
+            <textarea id="imagePrompt"  className={styles.inputBox} onChange={e => setInput(e.target.value)}></textarea>
+            <br/>
+            <br/>
+            <div className={styles.buttonContainer}>
+                <button className={styles.button} onClick={test}>Create Shirt</button>
+            </div>
+            <div className={styles.container} id="container">
+                <div>
+                    <div className={styles.divimageshirt}>
+                    <img  className={styles.topimage} src="tshirt_blank.png" />
+                    </div>
+                    <div className={styles.divimage}>
+                        <img className={styles.imgoverlay} src={data}/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }
+export default test

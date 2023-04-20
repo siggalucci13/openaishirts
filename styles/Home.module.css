@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divimageshirt,
+.divimage {
+  position: relative;
+}
+
+.topimage {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.imgoverlay {
+  position: absolute;
+  top: 150px; /* Move the imgoverlay 25% down from the top of the topimage */
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.inputBox{
+  border-color: #0319ab;
+  border-radius: 9px;
+  border-width: 3px;
+  font-family:'Roboto';
+  font-size: 20px;
+  width: 500px;
+  height: 200px;
+  display:block;
+  margin:auto;
+  text-align: top;
+}
+
+
+.button{
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 3px;
+  padding: 12px 24px;
+  border: 0;
+  color: #fff;
+  background: #0319ab;
+  line-height: 1.15;
+  font-size: 16px;
+}
+.button:hover {
+  transition: all .1s ease;
+  box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem; /* Optional: add some spacing below the container */
+}
+
+/* ... the rest of your CSS rules ... */

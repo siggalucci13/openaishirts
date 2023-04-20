@@ -5,7 +5,7 @@ export default async function createImage (req, res) {
     const prompt = req.query.query
     console.log(prompt)
     const configuration = new Configuration({
-        apiKey: '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',
+        apiKey: process.env.REACT_APP_OPENAI_API_KEY,
       });
     const openai = new OpenAIApi(configuration);
     //console.log(openai)
@@ -22,7 +22,7 @@ export default async function createImage (req, res) {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('Cache-Control', 'max-age=180000');
-        res.end([JSON.stringify(imageUrl)]);
+        res.end(JSON.stringify(imageUrl));
         } catch (error) {
             if (error.response) {
                 console.log(error.response.status);
