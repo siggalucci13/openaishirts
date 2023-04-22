@@ -21,4 +21,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 👕 Make shirts 👕
 
 <img width="578" alt="image" src="https://user-images.githubusercontent.com/122421623/233237819-6b47c9ce-48dd-4c40-856a-308e6a043029.png">
-<img width="825" alt="image" src="https://user-images.githubusercontent.com/122421623/233237895-1378ef30-4242-4f14-9c5d-aff2466d4950.png">
+<img width="587" alt="turtleondog_shirt" src="https://user-images.githubusercontent.com/122421623/233760950-ece4b39e-1f8b-45e4-90fd-f07903744347.png">
+
